@@ -65,24 +65,24 @@ int main()
 	{
 		vector<string> *vm = split(val.erase(0, 1), "\" ");
 		vms.push_back(VM((*vm)[0], (*vm)[1]));
-		cout << i << ".\t" << (*vm)[0] << endl;	//display number and name of VM
-		questionString += to_string(i++);
+		cout << ++i << ".\t" << (*vm)[0] << endl;	//display number and name of VM
+		questionString += to_string(i);
 		questionString += ",";
 	}
-	questionString += "-1]?";
+	questionString += "0]?";
 
-	cout << "-1" << ".\t" << "Programm beenden" << endl;
+	cout << "0" << ".\t" << "Programm beenden" << endl;
 
 	delete vm_strings;
 
 	// let the user choose one vm
 	cout << endl << "Please insert the number of an VM and press return to select and start it." << endl;
 	cout << questionString << " ";
-	size_t selected = -1;
+	size_t selected = 0;
 	cin >> selected;
 
 	// if the user gives a value in the range of vms
-	if (selected >= 0 && selected < vms.size())
+	if (selected >= 1 && selected <= vms.size())
 	{
 
 #ifdef _WIN32
@@ -92,7 +92,7 @@ int main()
 #endif
 
 		// start the vm without binding it to the current process
-		string arguments = " --comment \"" + vms[selected].name + "\" --startvm \"" + vms[selected].UID + "\"";
+		string arguments = " --comment \"" + vms[selected - 1].name + "\" --startvm \"" + vms[selected - 1].UID + "\"";
 		string command = virtualBoxVM_Command + arguments;
 		std::system(command.c_str());
 	}
