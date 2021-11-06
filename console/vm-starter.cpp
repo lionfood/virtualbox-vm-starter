@@ -71,7 +71,7 @@ int main()
 	}
 	questionString += "0]?";
 
-	cout << "0" << ".\t" << "Programm beenden" << endl;
+	cout << "0" << ".\t" << "Exit Application" << endl;
 
 	delete vm_strings;
 
@@ -99,7 +99,7 @@ int main()
 	// show abort message
 	else
 	{
-		cout << "Abbruch." << endl;
+		cout << "Abort." << endl;
 	}
 	return 0;
 }
