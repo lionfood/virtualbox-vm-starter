@@ -8,6 +8,12 @@
 using namespace std;
 using namespace TinyProcessLib;
 
+/// <summary>
+/// Splits a string based on a given delimiter.
+/// </summary>
+/// <param name="value">the string to split</param>
+/// <param name="delimiter">the delimiter to use</param>
+/// <returns>A pointer to an std::vector&lt;std::string&gt;, each entry containing one part of the splitted string</returns>
 vector<string>* split(string const &value, string delimiter)
 {
 	vector<string> *words = new vector<string>();
@@ -22,11 +28,22 @@ vector<string>* split(string const &value, string delimiter)
 	return words;
 }
 
-void fillWithSpace(string *origin, size_t numberOfSpaces)
+/// <summary>
+/// insert numberOfChars times the '0'-character in front of origin
+/// </summary>
+/// <param name="origin">the string to pad</param>
+/// <param name="numberOfChars">how many characters should be used for padding</param>
+void padNull(string *origin, size_t numberOfChars)
 {
-	origin->insert(0, numberOfSpaces, '0');
+	origin->insert(0, numberOfChars, '0');
 }
 
+/// <summary>
+/// the entrypoint of the application
+/// 
+/// Controles the console logic.
+/// </summary>
+/// <returns>0 if the processing was successfull</returns>
 int main()
 {
 
@@ -61,6 +78,10 @@ int main()
 	vector<VM> vms{};
 	string questionString = "[";
 
+	/*
+	 * initialize and fill our vms vector
+	 * display all possibilities
+	 */
 	for (string val : *vm_strings)
 	{
 		vector<string> *vm = split(val.erase(0, 1), "\" ");
@@ -71,6 +92,7 @@ int main()
 	}
 	questionString += "0]?";
 
+	// display aborting possibility
 	cout << "0" << ".\t" << "Exit Application" << endl;
 
 	delete vm_strings;
@@ -78,13 +100,14 @@ int main()
 	// let the user choose one vm
 	cout << endl << "Please insert the number of an VM and press return to select and start it." << endl;
 	cout << questionString << " ";
+
+	// read the selected entry
 	size_t selected = 0;
 	cin >> selected;
 
 	// if the user gives a value in the range of vms
 	if (selected >= 1 && selected <= vms.size())
 	{
-
 #ifdef _WIN32
 		string virtualBoxVM_Command = "start \"\" \"C:\\Program Files\\Oracle\\VirtualBox\\VirtualBoxVM.exe\"";
 #else
