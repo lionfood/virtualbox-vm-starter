@@ -3,7 +3,7 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project ("vm-starter")
+project ("vm-starter" VERSION 2.1)
 add_subdirectory("tiny-process-library")
 add_executable (vm-starter "vm-starter.cpp" res.rc)
 target_link_libraries(vm-starter tiny-process-library)
