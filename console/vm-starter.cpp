@@ -48,10 +48,10 @@ int main()
 {
 
 #ifdef _WIN32
-	string VBOX_MANAGE_COMMAND = "\"C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe\""" list vms";
+	string VBOX_MANAGE_COMMAND = "\"C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe\""" list vms -s";
 	string delimiter = "\r\n";
 #else
-	string VBOX_MANAGE_COMMAND = "VBoxManage list vms";
+	string VBOX_MANAGE_COMMAND = "VBoxManage list vms -s";
 	string delimiter = "\n";
 #endif
 
