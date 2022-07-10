@@ -118,6 +118,7 @@ bld/
 [Ll]og/
 [Ll]ogs/
 [Oo]ut/
+[Bb]uild/
 
 # CMake integration
 CMakeSettings.json
