@@ -110,12 +110,14 @@ int main()
 	{
 #ifdef _WIN32
 		string virtualBoxVM_Command = "start \"\" \"C:\\Program Files\\Oracle\\VirtualBox\\VirtualBoxVM.exe\"";
+		string arguments = " --comment \"" + vms[selected - 1].name + "\" --startvm \"" + vms[selected - 1].UID + "\"";
 #else
-		string virtualBoxVM_Command = "VirtualBoxVM";
+		string virtualBoxVM_Command = "VBoxManage";
+		string arguments = "startvm" + vms[selected - 1].UID;
 #endif
 
 		// start the vm without binding it to the current process
-		string arguments = " --comment \"" + vms[selected - 1].name + "\" --startvm \"" + vms[selected - 1].UID + "\"";
+		
 		string command = virtualBoxVM_Command + arguments;
 		std::system(command.c_str());
 	}
