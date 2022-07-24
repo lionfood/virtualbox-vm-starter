@@ -14,8 +14,8 @@
    <string>VM Starter</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../vbox-folder.ico</normaloff>../vbox-folder.ico</iconset>
+   <iconset resource="app.qrc">
+    <normaloff>:/VMStarter/vbox-folder-64.png</normaloff>:/VMStarter/vbox-folder-64.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QComboBox" name="comboBox">
@@ -69,7 +69,9 @@
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="app.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>abortButton</sender>
