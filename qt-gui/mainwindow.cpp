@@ -65,11 +65,11 @@ void MainWindow::OK_Click()
 		exit(-1);
 	}
 #ifdef _WIN32
-	QString command = "start \"\" \"C:\\Program Files\\Oracle\\VirtualBox\\VirtualBoxVM.exe\";
+	QString command = "start \"\" \"C:\\Program Files\\Oracle\\VirtualBox\\VirtualBoxVM.exe\\";
 	QString arguments " --comment \"" + vms[curIndex].name + "\" --startvm \"" + vms[curIndex].UID + "\"";
 #else
 	QString command = "VBoxManage";
-	QString arguments = " startvm \"" + vms[curIndex].UID + "\" &";
+	QString arguments = " startvm " + vms[curIndex].UID;
 #endif
 	QString COMMAND = command + arguments;
 	std::system(COMMAND.toStdString().c_str());
