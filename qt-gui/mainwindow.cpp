@@ -59,17 +59,19 @@ void MainWindow::getVMs()
 
 void MainWindow::OK_Click()
 {
-	QString COMMAND;
 	int curIndex = ui->comboBox->currentIndex();
 	if(curIndex < 0)
 	{
 		exit(-1);
 	}
 #ifdef _WIN32
-	COMMAND = "start \"\" \"C:\\Program Files\\Oracle\\VirtualBox\\VirtualBoxVM.exe\" --comment \"" + vms[curIndex].name + "\" --startvm \"" + vms[curIndex].UID + "\"";
+	QString command = "start \"\" \"C:\\Program Files\\Oracle\\VirtualBox\\VirtualBoxVM.exe\";
+	QString arguments " --comment \"" + vms[curIndex].name + "\" --startvm \"" + vms[curIndex].UID + "\"";
 #else
-	COMMAND = "VirtualBoxVM --comment \"" + vms[curIndex].name + "\" --startvm \"" + vms[curIndex].UID + "\" &";
+	QString command = "VBoxManage";
+	QString arguments = " startvm \"" + vms[curIndex].UID + "\" &";
 #endif
+	QString COMMAND = command + arguments;
 	std::system(COMMAND.toStdString().c_str());
 	close();
 }

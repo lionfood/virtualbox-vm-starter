@@ -113,12 +113,13 @@ int main()
 		string arguments = " --comment \"" + vms[selected - 1].name + "\" --startvm \"" + vms[selected - 1].UID + "\"";
 #else
 		string virtualBoxVM_Command = "VBoxManage";
-		string arguments = "startvm" + vms[selected - 1].UID;
+		string arguments = " startvm " + vms[selected - 1].UID;
 #endif
 
 		// start the vm without binding it to the current process
 		
 		string command = virtualBoxVM_Command + arguments;
+		std::cout << command << std::endl;
 		std::system(command.c_str());
 	}
 	// show abort message
